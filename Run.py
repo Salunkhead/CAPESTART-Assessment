@@ -80,21 +80,6 @@ def classify(data, label):
     pm = np.array([accuracy_score(y_test, pred), precision_score(y_test, pred, average='weighted'),
                    recall_score(y_test, pred, average='weighted'),
                    f1_score(y_test, pred, average='weighted')])
-    #
-    #
-    # cr, pm = np.load('pre_evaluated/cross_results.npy', allow_pickle=True), np.load('pre_evaluated/pm.npy',
-    #                                                                             allow_pickle=True)
-    return cr_df, pm
+ 
 
 classify(Vec_data, label)
-pm_df = pd.DataFrame(pm, columns=['Performance metrics'], index=['Accuracy', 'Precision', 'Recall', 'F1'])
-
-cr_df = pd.DataFrame(cr, columns=['k_fold1', 'k_fold2', 'k_fold3', 'k_fold4', 'k_fold5'],
-                     index=['Accuracy', 'Precision', 'Recall', 'F1'])
-
-print('for hyper parameters such as KERNAL =rbf  is used because rbf kernal gives prediction better than the '
-      'other kernal, and the C value is tuned to 5 for better accuracy')
-print('Cross-validation Results')
-print(cr_df.to_markdown())
-print('performance metrics Results')
-print(pm_df.to_markdown())
