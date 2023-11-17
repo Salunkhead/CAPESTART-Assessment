@@ -31,5 +31,6 @@ req = Request(
     headers={'User-Agent': 'Mozilla/5.0'}
 )
 webpage = urlopen(req).read()
+print(webpage)
 
 
